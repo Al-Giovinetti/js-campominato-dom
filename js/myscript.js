@@ -52,3 +52,41 @@ function createElement(tagName, className, htmlContent){
     htmlElement.innerHTML = htmlContent;
     return htmlElement;
 }
+
+/**
+ * Function that return a random list of number all different
+ * 
+ * @param maxNumber Max number of the gap
+ * @param minNumber Min number of the gap
+ * @param elements Number of the elements in the list
+ * @returns random list of number all different
+ */
+function createdRandomListNumber(maxNumber,minNumber,elements){
+    const numberList=[];
+
+    if((maxNumber - minNumber) < elements){
+        return [];
+    }
+
+    while(numberList.length > elements){
+        const randomNumber=createdRandomNumber(maxNumber,minNumber)
+
+        if(!numberList.includes(randomNumber)){
+            numberList.push(randomNumber);
+        }
+
+    }
+}
+
+/**
+ * Function that generates a random number between two value included
+ * 
+ * @param  maxNumber Max number included in the gap 
+ * @param  minNumber Min number included in the gap
+ * @returns a random number in the chosen gap
+ */
+function createdRandomNumber(maxNumber,minNumber){
+    const randomNumber = Math.floor(Math.random()*(maxNumber-minNumber +1)+minNumber);
+
+    return randomNumber;
+}
