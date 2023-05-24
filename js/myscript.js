@@ -12,8 +12,6 @@ function startNewGame(){
 
     let cellsNumber = 0;
     let cellsClass;
-    const bombList = createdRandomListNumber(100,0,16)
-    console.log(bombList)
 
     if (level === 0){
         cellsNumber = 100;
@@ -25,6 +23,9 @@ function startNewGame(){
         cellsNumber = 49;
         cellsClass = 'cell-hard';
     }
+
+    const bombList = createdRandomListNumber(cellsNumber,0,16)
+    console.log(bombList)
 
     gridElement.innerHTML = "";
 
