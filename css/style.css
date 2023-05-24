@@ -71,8 +71,12 @@ div.grid .cell.cell-hard{
     height: calc(100% / 7);
 }
 
-div.grid .cell.active{
-    background-color: lime;
+div.grid .cell.explosion{
+    background-color: red;
+}
+
+div.grid .cell.save{
+    background-color: blue;
 }
 
 div.grid .cell>p{

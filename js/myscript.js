@@ -35,7 +35,10 @@ function startNewGame(){
 
         newCell.addEventListener('click', function(){
             console.log(index + 1);
-            this.classList.toggle('active'); // this === newCell
+            if(bombList.includes(index + 1)){
+            this.classList.add('explosion'); // this === newCell
+            }else
+            this.classList.add('save'); // this === newCell
         });
 
         gridElement.appendChild(newCell);
