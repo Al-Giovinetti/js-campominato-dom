@@ -1,6 +1,9 @@
+
 const playButton = document.querySelector('header button.button-play');
+
 playButton.addEventListener(('click'), function(){
     startNewGame();
+
 });
 
 function startNewGame(){
@@ -9,6 +12,8 @@ function startNewGame(){
 
     let cellsNumber = 0;
     let cellsClass;
+    const bombList = createdRandomListNumber(100,0,16)
+    console.log(bombList)
 
     if (level === 0){
         cellsNumber = 100;
@@ -40,6 +45,21 @@ function startNewGame(){
 //FUNCTION//
 
 /**
+ * Function that generates a random number between two value included
+ * 
+ * @param {number} maxNumber Max number included in the gap 
+ * @param {number} minNumber Min number included in the gap
+ * @returns a random number in the chosen gap
+ */
+function createdRandomNumber(maxNumber,minNumber){
+    const randomNumber = Math.floor(Math.random()*(maxNumber-minNumber +1)+minNumber);
+
+    return randomNumber;
+}
+
+
+
+/**
  * Function that creates a custom HTML element with the given tag and classes (as a string)
  *
  * @param {string} tagName The tag of the element to be created as a string
@@ -53,12 +73,14 @@ function createElement(tagName, className, htmlContent){
     return htmlElement;
 }
 
+
+
 /**
  * Function that return a random list of number all different
  * 
- * @param maxNumber Max number of the gap
- * @param minNumber Min number of the gap
- * @param elements Number of the elements in the list
+ * @param {number} maxNumber Max number of the gap
+ * @param {number} minNumber Min number of the gap
+ * @param {number} elements Number of the elements in the list
  * @returns random list of number all different
  */
 function createdRandomListNumber(maxNumber,minNumber,elements){
@@ -68,25 +90,16 @@ function createdRandomListNumber(maxNumber,minNumber,elements){
         return [];
     }
 
-    while(numberList.length > elements){
+    while(numberList.length < elements){
         const randomNumber=createdRandomNumber(maxNumber,minNumber)
 
         if(!numberList.includes(randomNumber)){
             numberList.push(randomNumber);
         }
-
     }
+    return numberList
 }
 
-/**
- * Function that generates a random number between two value included
- * 
- * @param  maxNumber Max number included in the gap 
- * @param  minNumber Min number included in the gap
- * @returns a random number in the chosen gap
- */
-function createdRandomNumber(maxNumber,minNumber){
-    const randomNumber = Math.floor(Math.random()*(maxNumber-minNumber +1)+minNumber);
 
-    return randomNumber;
-}
+
+
