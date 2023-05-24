@@ -2,8 +2,8 @@
 const playButton = document.querySelector('header button.button-play');
 
 playButton.addEventListener(('click'), function(){
-    startNewGame();
 
+    startNewGame();
 });
 
 function startNewGame(){
@@ -33,17 +33,22 @@ function startNewGame(){
         const newCell = createElement('div','cell '+ cellsClass,
                         `<p>${index + 1}</p>`);
 
+        let finalScore = 0
+
         newCell.addEventListener('click', function(){
             console.log(index + 1);
             if(bombList.includes(index + 1)){
-            this.classList.add('explosion'); // this === newCell
-            }else
-            this.classList.add('save'); // this === newCell
+                this.classList.add('explosion'); // this === newCell
+                alert("Hai perso partita finita")
+            }else{
+                this.classList.add('save'); // this === newCell
+                finalScore=finalScore+1}
         });
 
         gridElement.appendChild(newCell);
     }
 }
+
 
 
 //FUNCTION//
