@@ -29,6 +29,8 @@ function startNewGame(){
 
     gridElement.innerHTML = "";
 
+    let gameover = false
+
     for (let index = 0; index < cellsNumber; index++) {
         const newCell = createElement('div','cell '+ cellsClass,
                         `<p>${index + 1}</p>`);
@@ -36,13 +38,16 @@ function startNewGame(){
         let finalScore = 0
 
         newCell.addEventListener('click', function(){
-            console.log(index + 1);
-            if(bombList.includes(index + 1)){
-                this.classList.add('explosion'); // this === newCell
-                alert("Hai perso partita finita")
-            }else{
-                this.classList.add('save'); // this === newCell
-                finalScore=finalScore+1}
+            if(gameover == false){
+                if(bombList.includes(index + 1)){
+                    this.classList.add('explosion'); // this === newCell
+                    alert("Hai perso partita finita")
+                    gameover = true
+                }else{
+                    this.classList.add('save'); // this === newCell
+                    finalScore=finalScore+1
+                }
+            }
         });
 
         gridElement.appendChild(newCell);
