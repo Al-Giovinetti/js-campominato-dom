@@ -31,11 +31,11 @@ function startNewGame(){
 
     let gameover = false
 
+    let finalScore=0
+
     for (let index = 0; index < cellsNumber; index++) {
         const newCell = createElement('div','cell '+ cellsClass,
                         `<p>${index + 1}</p>`);
-
-        let finalScore = 0
 
         newCell.addEventListener('click', function(){
             if(gameover == false){
@@ -45,13 +45,14 @@ function startNewGame(){
                     gameover = true
                 }else{
                     this.classList.add('save'); // this === newCell
-                    finalScore=finalScore+1
+                    finalScore = finalScore + 1
+                    console.log("hai fatto " + finalScore + " punti")
                 }
             }
         });
-
         gridElement.appendChild(newCell);
     }
+
 }
 
 
